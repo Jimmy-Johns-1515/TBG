@@ -1,57 +1,84 @@
 #include<iostream>
 using namespace std;
 
+//global variables
+string inventory[10];
+int dubloons = 100;
+int health = 100;
+
 //function declarations
-void MonsterGen();
+void MonsterGen(); 
+void itemDropper();
+void Shop();
+void BattleSystem();
 
 int main() {
+	//initialize it with all empty spaces
+	for (int i = 0; i < 10; i++)
+		inventory[i] = " ";
+
+	cout << "Welcome to the text based game!" << endl;
+
+	//local variables
 	int room = 1;
 	char input;
 
-	while (1) {//game loop
+	while (1) { //game loop
+		cout << "your inventory:" << endl;
+		for (int i = 0; i < 10; i++)
+			cout << inventory[i] << " ";
+		cout << endl;
 		switch (room) {
 		case 1:
 			MonsterGen();
 			cout << "you're in room 1, you can go (s)outh." << endl;
+			if (inventory[0] != "key")
+				cout << "On the ground there is an old (k)ey." << endl;
+			cout << "there's a sho(p) in the corner" << endl;
 			cin >> input;
 			if (input == 's')
-				room=2;
-			else
-				cout << "thats a wall -_-" << endl;
+				room = 2;
+			if (input == 'p')
+				Shop();	
+			if (input == 'k') {
+				cout << "you got an old key!" << endl;
+				inventory[0] = "key";
+			}
 			break;
 		case 2:
 			MonsterGen();//function call
+			BattleSystem();
 			cout << "you're in room 2, you can go (n)orth or (e)ast." << endl;
+			cout << "theres a rusty (b)ox in the room" << endl;
 			cin >> input;
-				if (input == 'n')
-					room = 1;
-				else if (input == 'e')
-					room = 3;
-				else
-					cout << "thats a wall -_-" << endl;
-				break;
+			if (input == 'n')
+				room = 1;
+			else if (input == 'e')
+				room = 3;
+			if (input == 'b')
+				itemDropper();	
+			break;
 		case 3:
 			MonsterGen();
 			cout << "a dragon appears!" << endl;
-				cout << "you're in room 3, you can go (w)est or (s)outh." << endl;
-				cin >> input;
-				if (input == 'w')
-					room = 2;
-				else if (input == 's')
-					room = 4;
-				else
-					cout << "thats a wall -_-" << endl;
-				break;
+			cout << "you're in room 3, you can go (w)est or (s)outh." << endl;
+			cin >> input;
+			if (input == 'w')
+				room = 2;
+			else if (input == 's')
+				room = 4;
+			break;
 		case 4:
 			MonsterGen();
 			cout << "you're in room 4, you can go (n)orth or (s)outh." << endl;
+			cout << "theres a rusty (b)ox in the room" << endl;
 			cin >> input;
 			if (input == 'n')
 				room = 3;
 			else if (input == 's')
 				room = 5;
-			else
-				cout << "thats a wall -_-" << endl;
+			if (input == 'b')
+				itemDropper();
 			break;
 		case 5:
 			MonsterGen();
@@ -61,19 +88,18 @@ int main() {
 				room = 4;
 			else if (input == 'e')
 				room = 6;
-			else
-				cout << "thats a wall -_-" << endl;
 			break;
 		case 6:
 			MonsterGen();
 			cout << "you're in room 6, you can go (w)est or (e)ast." << endl;
+			cout << "theres a rusty (b)ox in the room" << endl;
 			cin >> input;
 			if (input == 'w')
 				room = 5;
 			else if (input == 'e')
 				room = 7;
-			else
-				cout << "thats a wall -_-" << endl;
+			if (input == 'b')
+				itemDropper();	
 			break;
 		case 7:
 			MonsterGen();
@@ -83,19 +109,18 @@ int main() {
 				room = 6;
 			else if (input == 'n')
 				room = 8;
-			else
-				cout << "thats a wall -_-" << endl;
 			break;
 		case 8:
 			MonsterGen();
 			cout << "you're in room 8, you can go (s)outh or (e)ast." << endl;
+			cout << "theres a rusty (b)ox in the room" << endl;
 			cin >> input;
 			if (input == 's')
 				room = 7;
 			else if (input == 'e')
 				room = 9;
-			else
-				cout << "thats a wall -_-" << endl;
+			if (input == 'b')
+				itemDropper();
 			break;
 		case 9:
 			MonsterGen();
@@ -105,8 +130,6 @@ int main() {
 				room = 8;
 			else if (input == 'n')
 				room = 10;
-			else
-				cout << "thats a wall -_-" << endl;
 			break;
 		case 10:
 			MonsterGen();
@@ -116,41 +139,42 @@ int main() {
 				room = 9;
 			else if (input == 'n')
 				room = 11;
-			else
-				cout << "thats a wall -_-" << endl;
 			break;
 		case 11:
 			MonsterGen();
 			cout << "you're in room 11, you can go (w)est or (e)ast." << endl;
+			cout << "theres a rusty (b)ox in the room" << endl;
 			cin >> input;
 			if (input == 's')
 				room = 10;
 			else if (input == 'e')
 				room = 12;
-			else
-				cout << "thats a wall -_-" << endl;
+			if (input == 'b')
+				itemDropper();
 			break;
 		case 12:
 			MonsterGen();
 			cout << "you're in room 12, you can go (w)est or (n)orth." << endl;
+			cout << "theres a rusty (b)ox in the room" << endl;
 			cin >> input;
 			if (input == 'w')
 				room = 11;
 			else if (input == 'n')
 				room = 13;
-			else
-				cout << "thats a wall -_-" << endl;
+			if (input == 'b')
+				itemDropper();
 			break;
 		case 13:
 			MonsterGen();
 			cout << "you're in room 13, you can go (s)outh or (n)orth." << endl;
+			cout << "theres a rusty (b)ox in the room" << endl;
 			cin >> input;
 			if (input == 's')
 				room = 12;
 			else if (input == 'n')
 				room = 14;
-			else
-				cout << "thats a wall -_-" << endl;
+			if (input == 'b')
+				itemDropper();
 			break;
 		case 14:
 			MonsterGen();
@@ -160,23 +184,20 @@ int main() {
 				room = 13;
 			else if (input == 'e')
 				room = 15;
-			else
-				cout << "thats a wall -_-" << endl;
 			break;
 		case 15:
 			MonsterGen();
 			cout << "you're in room 15, you can return and go (w)est." << endl;
+			cout << "theres a rusty (b)ox in the room" << endl;
 			cin >> input;
 			if (input == 'w')
 				room = 14;
-			else
-				cout << "thats a wall -_-" << endl;
+			if (input == 'b')
+				itemDropper();
 			break;
 		}
 	}
 }
-
-
 
 
 void MonsterGen() {
@@ -189,6 +210,96 @@ void MonsterGen() {
 		cout << "a zombie attacks you!" << endl;
 	else
 		cout << "nothing spawned" << endl;
-
-
 }
+
+void itemDropper() {
+	int num = rand() % 100; // b/t 0-99
+	if (num < 25) {
+		cout << "you got a dirty sock!" << endl;
+		inventory[1] = "sock";
+	}
+	else if (num < 50) {
+		cout << "you got a handful of legos!" << endl; \
+			inventory[2] = "legos";
+	}
+	else if (num < 60) {
+		cout << "you got a CHICKEN" << endl;
+
+	}
+	else {
+		cout << "tough luck buddy, this one's empty" << endl;
+	}
+}
+
+void Shop() {
+	int input = 123456789012345678;
+	while (input != 0) {
+		cout << "welcome to the shop!" << endl;
+		cout << "you have " << dubloons << " dubloons." << endl;
+		cout << "items for sale:" << endl;
+		cout << "1) sword: 20" << endl;
+		cout << "2) potion: 10" << endl;
+		cout << "3) armor: 50" << endl;
+		cout << "to leave shop press b" << endl;
+		cin >> input;
+		if (input == 1) {
+			if (dubloons >= 20) {
+				cout << "you bought a sword!" << endl;
+				inventory[1] = "sword";
+				dubloons -= 20;
+			}
+			else
+				cout << "Mann you too broke" << endl;
+		}
+		if (input == 2) {
+			if (dubloons >= 10) {
+				cout << "you bought a potion!" << endl;
+				inventory[2] = "potion";
+				dubloons -= 10;
+			}
+			else
+				cout << "Get ya money up, not ya funny up";
+		}
+		if (input == 3) {
+			if (dubloons >= 50) {
+				cout << "you bought armor!" << endl;
+				inventory[3] = "armor";
+				dubloons -= 50;
+			}
+			else
+				cout << "you think this is a joke??" << endl;
+		if (input == 'b'){
+			cout << "adios brudda" << endl;
+			
+		}
+		
+		}
+	}
+} //end of shop function
+
+
+void BattleSystem() 
+	{
+	int MonsterHealth = 20;
+	cout << "-------Round 1 FIGHT!!-------" << endl;
+	while (health > 0 && MonsterHealth > 0) {
+		if (inventory[1] == "shield") {
+			cout << "while you're still in one piece, that still hurt" << endl;
+			health -= 5
+		}
+		else {
+			cout << "the monster bites you for 10 damage" << endl;
+			health -= 10
+		}
+		if (inventory[0] == "sword")
+			PlayerDamage *= 2
+			cout << "THE SWORD HITS HEAVY!!" << endl;
+		else {
+			"the monster took damage, but is not gone yet" << endl;
+		}
+		cout << "you hit the monster for 10 damage" << endl;
+		MonsterHealth -= 10;
+
+	}
+	cout << "--------------------" << endl;
+	}

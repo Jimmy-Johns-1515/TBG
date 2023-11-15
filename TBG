@@ -5,12 +5,14 @@ using namespace std;
 string inventory[10];
 int dubloons = 100;
 int health = 100;
+int PetAff = 0;
 
 //function declarations
 void MonsterGen(); 
 void itemDropper();
 void Shop();
 void BattleSystem();
+void MonkeyActions();
 
 int main() {
 	//initialize it with all empty spaces
@@ -18,6 +20,7 @@ int main() {
 		inventory[i] = " ";
 
 	cout << "Welcome to the text based game!" << endl;
+	cout << "You enter a broken down house to investigate why nobody will go near the house. As you enter the house the door shuts   and wont open. When you turn around you see a shadowy small figure run away. Was it a monkey???" << endl;
 
 	//local variables
 	int room = 1;
@@ -35,7 +38,12 @@ int main() {
 			if (inventory[0] != "key")
 				cout << "On the ground there is an old (k)ey." << endl;
 			cout << "there's a sho(p) in the corner" << endl;
+			cout << "a monkey?? seems like he wants headscratches. Press h to give head rubs" << endl;
 			cin >> input;
+			if (input == 'h') {
+				cout << "he seems happy and starts following you. strange." << endl;
+				PetAff += 10;
+			}
 			if (input == 's')
 				room = 2;
 			if (input == 'p')
@@ -48,9 +56,15 @@ int main() {
 		case 2:
 			MonsterGen();//function call
 			BattleSystem();
+			MonkeyActions();
+			cout << "MORE HEADRUBS!! press h" << endl;
 			cout << "you're in room 2, you can go (n)orth or (e)ast." << endl;
 			cout << "theres a rusty (b)ox in the room" << endl;
 			cin >> input;
+			if (input == 'h') {
+				cout << "he seems happy and starts following you. strange." << endl;
+				PetAff += 10;
+			}
 			if (input == 'n')
 				room = 1;
 			else if (input == 'e')
@@ -60,6 +74,8 @@ int main() {
 			break;
 		case 3:
 			MonsterGen();
+			MonkeyActions();
+			cout << "MORE HEADRUBS!! press h" << endl;
 			cout << "a dragon appears!" << endl;
 			cout << "you're in room 3, you can go (w)est or (s)outh." << endl;
 			cin >> input;
@@ -70,6 +86,8 @@ int main() {
 			break;
 		case 4:
 			MonsterGen();
+			MonkeyActions();
+			cout << "MORE HEADRUBS!! press h" << endl;
 			cout << "you're in room 4, you can go (n)orth or (s)outh." << endl;
 			cout << "theres a rusty (b)ox in the room" << endl;
 			cin >> input;
@@ -82,6 +100,8 @@ int main() {
 			break;
 		case 5:
 			MonsterGen();
+			MonkeyActions();
+			cout << "MORE HEADRUBS!! press h" << endl;
 			cout << "you're in room 5, you can go (n)orth or (e)ast." << endl;
 			cin >> input;
 			if (input == 'n')
@@ -91,6 +111,8 @@ int main() {
 			break;
 		case 6:
 			MonsterGen();
+			MonkeyActions();
+			cout << "MORE HEADRUBS!! press h" << endl;
 			cout << "you're in room 6, you can go (w)est or (e)ast." << endl;
 			cout << "theres a rusty (b)ox in the room" << endl;
 			cin >> input;
@@ -103,6 +125,8 @@ int main() {
 			break;
 		case 7:
 			MonsterGen();
+			MonkeyActions();
+			cout << "MORE HEADRUBS!! press h" << endl;
 			cout << "you're in room 7, you can go (w)est or (n)orth." << endl;
 			cin >> input;
 			if (input == 'w')
@@ -112,6 +136,8 @@ int main() {
 			break;
 		case 8:
 			MonsterGen();
+			MonkeyActions();
+			cout << "MORE HEADRUBS!! press h" << endl;
 			cout << "you're in room 8, you can go (s)outh or (e)ast." << endl;
 			cout << "theres a rusty (b)ox in the room" << endl;
 			cin >> input;
@@ -124,6 +150,8 @@ int main() {
 			break;
 		case 9:
 			MonsterGen();
+			MonkeyActions();
+			cout << "MORE HEADRUBS!! press h" << endl;
 			cout << "you're in room 9, you can go (w)est or (n)orth." << endl;
 			cin >> input;
 			if (input == 'w')
@@ -133,6 +161,8 @@ int main() {
 			break;
 		case 10:
 			MonsterGen();
+			MonkeyActions();
+			cout << "MORE HEADRUBS!! press h" << endl;
 			cout << "you're in room 10, you can go (s)outh or (n)orth." << endl;
 			cin >> input;
 			if (input == 's')
@@ -142,6 +172,8 @@ int main() {
 			break;
 		case 11:
 			MonsterGen();
+			MonkeyActions();
+			cout << "MORE HEADRUBS!! press h" << endl;
 			cout << "you're in room 11, you can go (w)est or (e)ast." << endl;
 			cout << "theres a rusty (b)ox in the room" << endl;
 			cin >> input;
@@ -154,6 +186,8 @@ int main() {
 			break;
 		case 12:
 			MonsterGen();
+			MonkeyActions();
+			cout << "MORE HEADRUBS!! press h" << endl;
 			cout << "you're in room 12, you can go (w)est or (n)orth." << endl;
 			cout << "theres a rusty (b)ox in the room" << endl;
 			cin >> input;
@@ -166,6 +200,8 @@ int main() {
 			break;
 		case 13:
 			MonsterGen();
+			MonkeyActions();
+			cout << "MORE HEADRUBS!! press h" << endl;
 			cout << "you're in room 13, you can go (s)outh or (n)orth." << endl;
 			cout << "theres a rusty (b)ox in the room" << endl;
 			cin >> input;
@@ -178,6 +214,8 @@ int main() {
 			break;
 		case 14:
 			MonsterGen();
+			MonkeyActions();
+			cout << "MORE HEADRUBS!! press h" << endl;
 			cout << "you're in room 14, you can go (s)outh or (e)ast." << endl;
 			cin >> input;
 			if (input == 's')
@@ -187,6 +225,8 @@ int main() {
 			break;
 		case 15:
 			MonsterGen();
+			MonkeyActions();
+			cout << "MORE HEADRUBS!! press h" << endl;
 			cout << "you're in room 15, you can return and go (w)est." << endl;
 			cout << "theres a rusty (b)ox in the room" << endl;
 			cin >> input;
@@ -197,6 +237,19 @@ int main() {
 			break;
 		}
 	}
+}
+
+
+void MonkeyActions() {
+	int num = rand() % 200;
+	if (num < 25)
+		cout << "the monkey starts screaming" << endl;
+	else if (num < 50)
+		cout << "the monkey jumps up and down for some reason" << endl;
+	else if (num < 75)
+		cout << "monkey monkey begins to scratch his but" << endl;
+	else
+		cout << "monkey is looking around at the ceiling for some reason" << endl;
 }
 
 
@@ -285,20 +338,20 @@ void BattleSystem()
 	while (health > 0 && MonsterHealth > 0) {
 		if (inventory[1] == "shield") {
 			cout << "while you're still in one piece, that still hurt" << endl;
-			health -= 5
+			health -= 5;
 		}
 		else {
 			cout << "the monster bites you for 10 damage" << endl;
-			health -= 10
+			health -= 10;
 		}
-		if (inventory[0] == "sword")
-			PlayerDamage *= 2
-			cout << "THE SWORD HITS HEAVY!!" << endl;
-		else {
-			"the monster took damage, but is not gone yet" << endl;
-		}
-		cout << "you hit the monster for 10 damage" << endl;
-		MonsterHealth -= 10;
+		//if (inventory[0] == "sword")
+			//PlayerDamage *= 2
+			//cout << "THE SWORD HITS HEAVY!!" << endl;
+		//else {
+		//	cout << "the monster took damage, but is not gone yet" << endl;
+		//}
+		//cout << "you hit the monster for 10 damage" << endl;
+		//MonsterHealth -= 10;
 
 	}
 	cout << "--------------------" << endl;

@@ -1,3 +1,4 @@
+#include<Windows.h>
 #include<iostream>
 using namespace std;
 
@@ -18,23 +19,29 @@ int main() {
 	//initialize it with all empty spaces
 	for (int i = 0; i < 10; i++)
 		inventory[i] = " ";
+	
 
-	cout << "Welcome to the text based game!" << endl;
-	cout << "You enter a broken down house to investigate why nobody will go near the house. As you enter the house the door shuts   and wont open. When you turn around you see a shadowy small figure run away. Was it a monkey???" << endl;
+
+
+
+	cout << "Welcome to the End?" << endl;
+	//game story underneath
+	cout << "You enter a broken down house to investigate why nobody will go near the house or why people dissappear when they do.As you enter the house the door shuts and wont open. When you turn around you see a shadowy small figure run away. Was it amonkey???" << endl;
 
 	//local variables
 	int room = 1;
 	char input;
 
 	while (1) { //game loop
-		cout << "your inventory:" << endl;
+		cout << "Your Inventory:" << endl;
 		for (int i = 0; i < 10; i++)
-			cout << inventory[i] << " ";
+			cout << inventory[i] << " "; //shows the inventory along with the items
 		cout << endl;
 		switch (room) {
 		case 1:
+			system("color 70");
 			MonsterGen();
-			cout << "you're in room 1, you can go (s)outh." << endl;
+			cout << "You enter to a destroyed looking living room where a couch sits in the middle, half of it missing and the stuffing everywhere. By the looks of it you can only go (s)traight" << endl;
 			if (inventory[0] != "key")
 				cout << "On the ground there is an old (k)ey." << endl;
 			cout << "there's a sho(p) in the corner" << endl;
@@ -58,16 +65,16 @@ int main() {
 			BattleSystem();
 			MonkeyActions();
 			cout << "MORE HEADRUBS!! press h" << endl;
-			cout << "you're in room 2, you can go (n)orth or (e)ast." << endl;
+			cout << "As you enter this new room it starts to look less like a house and more like some psychos house. You can proceed to the (n)ext room or (r)eturn to the previous room." << endl;
 			cout << "theres a rusty (b)ox in the room" << endl;
 			cin >> input;
 			if (input == 'h') {
 				cout << "he seems happy and starts following you. strange." << endl;
 				PetAff += 10;
 			}
-			if (input == 'n')
+			if (input == 'r')
 				room = 1;
-			else if (input == 'e')
+			else if (input == 'n')
 				room = 3;
 			if (input == 'b')
 				itemDropper();	
@@ -75,25 +82,26 @@ int main() {
 		case 3:
 			MonsterGen();
 			MonkeyActions();
+			system("color fesf");
 			cout << "MORE HEADRUBS!! press h" << endl;
 			cout << "a dragon appears!" << endl;
-			cout << "you're in room 3, you can go (w)est or (s)outh." << endl;
+			cout << "You enter and it smells foul. It is hard to see with the occasional flashing light but in the corner there seems to be a human skull?!?! Do you go to the (n)ext room or (r)eturn to the previous room?" << endl;
 			cin >> input;
-			if (input == 'w')
+			if (input == 'r')
 				room = 2;
-			else if (input == 's')
+			else if (input == 'n')
 				room = 4;
 			break;
 		case 4:
 			MonsterGen();
 			MonkeyActions();
 			cout << "MORE HEADRUBS!! press h" << endl;
-			cout << "you're in room 4, you can go (n)orth or (s)outh." << endl;
+			cout << "This new room has blood smeared all around as if someone was trying to get away from something else. Lots of trash on the sticky floor. Do you wish to go to the (n)ext room or (r)eturn to the previous?" << endl;
 			cout << "theres a rusty (b)ox in the room" << endl;
 			cin >> input;
-			if (input == 'n')
+			if (input == 'r')
 				room = 3;
-			else if (input == 's')
+			else if (input == 'n')
 				room = 5;
 			if (input == 'b')
 				itemDropper();
@@ -102,23 +110,23 @@ int main() {
 			MonsterGen();
 			MonkeyActions();
 			cout << "MORE HEADRUBS!! press h" << endl;
-			cout << "you're in room 5, you can go (n)orth or (e)ast." << endl;
+			cout << "It gets worse as you continue. The room pretty much looks the same as the previous but no you can hear some kind of noise. You can't tell what it is but you know its ahead. Do you go to the (n)ext room or (r)eturn to the previous?" << endl;
 			cin >> input;
-			if (input == 'n')
+			if (input == 'r')
 				room = 4;
-			else if (input == 'e')
+			else if (input == 'n')
 				room = 6;
 			break;
 		case 6:
 			MonsterGen();
 			MonkeyActions();
 			cout << "MORE HEADRUBS!! press h" << endl;
-			cout << "you're in room 6, you can go (w)est or (e)ast." << endl;
+			cout << "The sound continues playing but you still have no clue as to what it is. These rooms are looking exactly the same but if you look back you can tell its a new room. Do you go to the (n)ext or (r)eturn to the previous?" << endl;
 			cout << "theres a rusty (b)ox in the room" << endl;
 			cin >> input;
-			if (input == 'w')
+			if (input == 'r')
 				room = 5;
-			else if (input == 'e')
+			else if (input == 'n')
 				room = 7;
 			if (input == 'b')
 				itemDropper();	
@@ -127,7 +135,7 @@ int main() {
 			MonsterGen();
 			MonkeyActions();
 			cout << "MORE HEADRUBS!! press h" << endl;
-			cout << "you're in room 7, you can go (w)est or (n)orth." << endl;
+			cout << "The room is pretty? As you enter there is a couch sitting in the middle, a very nice clean white couch and on the wall infront a stand that looks like its for a tv. Do you go to the (n)ext room or (r)eturn to the previous?" << endl;
 			cin >> input;
 			if (input == 'w')
 				room = 6;
@@ -138,7 +146,7 @@ int main() {
 			MonsterGen();
 			MonkeyActions();
 			cout << "MORE HEADRUBS!! press h" << endl;
-			cout << "you're in room 8, you can go (s)outh or (e)ast." << endl;
+			cout << "This room is exactly the same as the previous but everything is placed on the side of the wall near the next door rather than in the middle. Do you go to the (n)ext or (r)eturn to the previous?" << endl;
 			cout << "theres a rusty (b)ox in the room" << endl;
 			cin >> input;
 			if (input == 's')
@@ -152,7 +160,7 @@ int main() {
 			MonsterGen();
 			MonkeyActions();
 			cout << "MORE HEADRUBS!! press h" << endl;
-			cout << "you're in room 9, you can go (w)est or (n)orth." << endl;
+			cout << "Now this room has a chandelier above the couch. It has a nice gold shine on it. You can proceed to the (n)ext or (r)eturn to the previous." << endl;
 			cin >> input;
 			if (input == 'w')
 				room = 8;
@@ -163,7 +171,7 @@ int main() {
 			MonsterGen();
 			MonkeyActions();
 			cout << "MORE HEADRUBS!! press h" << endl;
-			cout << "you're in room 10, you can go (s)outh or (n)orth." << endl;
+			cout << "New room new things. The chandelier has fallen onto the couch where a skeleton lies. Looks like it fell on someone that was there. Do you proceed to the (n)ext or (r)eturn?" << endl;
 			cin >> input;
 			if (input == 's')
 				room = 9;
@@ -174,7 +182,7 @@ int main() {
 			MonsterGen();
 			MonkeyActions();
 			cout << "MORE HEADRUBS!! press h" << endl;
-			cout << "you're in room 11, you can go (w)est or (e)ast." << endl;
+			cout << "This room is upside down but looks the same as the previous? the chandelier is still 'fallen' but rather than it falling downward it fell upward toward the roof where the couch is now somehow at along with the tv stand. (n)ext or (p)revious room?" << endl;
 			cout << "theres a rusty (b)ox in the room" << endl;
 			cin >> input;
 			if (input == 's')
@@ -188,7 +196,7 @@ int main() {
 			MonsterGen();
 			MonkeyActions();
 			cout << "MORE HEADRUBS!! press h" << endl;
-			cout << "you're in room 12, you can go (w)est or (n)orth." << endl;
+			cout << "It's all gone. All except the chandelier and the skeleton. everything is now upright but much harder to see again with flckering lights. And the sound from before is back still hard to see but enough to make your way to the (n)ext room or the (p)revious, what do you choose?" << endl;
 			cout << "theres a rusty (b)ox in the room" << endl;
 			cin >> input;
 			if (input == 'w')
@@ -202,7 +210,7 @@ int main() {
 			MonsterGen();
 			MonkeyActions();
 			cout << "MORE HEADRUBS!! press h" << endl;
-			cout << "you're in room 13, you can go (s)outh or (n)orth." << endl;
+			cout << "Once again, the lights are flickering making it hard to see. All thats left is a skeleton standing and watching you no matter where you move. Do you want to continue to the (n)ext room or (r)eturn?" << endl;
 			cout << "theres a rusty (b)ox in the room" << endl;
 			cin >> input;
 			if (input == 's')
@@ -216,7 +224,7 @@ int main() {
 			MonsterGen();
 			MonkeyActions();
 			cout << "MORE HEADRUBS!! press h" << endl;
-			cout << "you're in room 14, you can go (s)outh or (e)ast." << endl;
+			cout << "The skeleton is now watching you while pointing at a closed door where you can hear the strange noise. It sounds like growling. Do you (test) it or do you (chicken) out? There will be no returning!!!" << endl;
 			cin >> input;
 			if (input == 's')
 				room = 13;

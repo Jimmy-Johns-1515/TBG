@@ -14,6 +14,9 @@ void itemDropper();
 void Shop();
 void BattleSystem();
 void MonkeyActions();
+//int r= rand() % 255 + 1;
+//int g = rand() % 255 + 1;
+//int b = rand() % 255 + 1;
 
 int main() {
 	//initialize it with all empty spaces
@@ -36,16 +39,16 @@ int main() {
 		cout << "Your Inventory:" << endl;
 		for (int i = 0; i < 10; i++)
 			cout << inventory[i] << " "; //shows the inventory along with the items
-		cout << endl;
+		cout << endl << endl;
 		switch (room) {
 		case 1:
 			system("color 70");
 			MonsterGen();
 			cout << "You enter to a destroyed looking living room where a couch sits in the middle, half of it missing and the stuffing everywhere. By the looks of it you can only go (s)traight" << endl;
 			if (inventory[0] != "key")
-				cout << "On the ground there is an old (k)ey." << endl;
+			cout << "On the ground there is an old (k)ey." << endl;
 			cout << "there's a sho(p) in the corner" << endl;
-			cout << "a monkey?? seems like he wants headscratches. Press h to give head rubs" << endl;
+			cout << "and a monkey?? seems like he wants headscratches. Press h to give head rubs" << endl;
 			cin >> input;
 			if (input == 'h') {
 				cout << "he seems happy and starts following you. strange." << endl;
@@ -82,9 +85,8 @@ int main() {
 		case 3:
 			MonsterGen();
 			MonkeyActions();
-			system("color fesf");
+			//system(r, g, b);
 			cout << "MORE HEADRUBS!! press h" << endl;
-			cout << "a dragon appears!" << endl;
 			cout << "You enter and it smells foul. It is hard to see with the occasional flashing light but in the corner there seems to be a human skull?!?! Do you go to the (n)ext room or (r)eturn to the previous room?" << endl;
 			cin >> input;
 			if (input == 'r')
@@ -133,7 +135,7 @@ int main() {
 			break;
 		case 7:
 			MonsterGen();
-			MonkeyActions();
+			MonkeyActions(); 
 			cout << "MORE HEADRUBS!! press h" << endl;
 			cout << "The room is pretty? As you enter there is a couch sitting in the middle, a very nice clean white couch and on the wall infront a stand that looks like its for a tv. Do you go to the (n)ext room or (r)eturn to the previous?" << endl;
 			cin >> input;
@@ -233,9 +235,7 @@ int main() {
 			break;
 		case 15:
 			MonsterGen();
-			MonkeyActions();
-			cout << "MORE HEADRUBS!! press h" << endl;
-			cout << "you're in room 15, you can return and go (w)est." << endl;
+			cout << "The door shuts behind you and you see a player playing growling sounds and the monkey behind you closes the door and starts talking. 'come here' he says and asks for a banana and some milk if you want to leave alive. In the room there are many bones and you realize why everybody dissappears in this house. Do you (g)ive him the items or (a)ttempt to escape?" << endl;
 			cout << "theres a rusty (b)ox in the room" << endl;
 			cin >> input;
 			if (input == 'w')

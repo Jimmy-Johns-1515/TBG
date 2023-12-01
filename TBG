@@ -9,7 +9,7 @@ int health = 100;
 int PetAff = 0;
 
 //function declarations
-void MonsterGen(); 
+void MonsterGen();
 void itemDropper();
 void Shop();
 void BattleSystem();
@@ -19,13 +19,25 @@ void MonkeyActions();
 //int b = rand() % 255 + 1;
 
 int main() {
+	cout << "                    ,------." << endl;
+	cout << "                   /        \\" << endl;
+	cout << "                  | C)   C)  |" << endl;
+	cout << "                  |  .___,   |" << endl;
+	cout << "                   \\. \\_/   /" << endl;
+	cout << "                    `------'" << endl;
+	cout << ".######.........####..######.######........##..##..####..##..##." << endl;
+	cout << "...##..........##.....##.....##.............####..##..##.##..##." << endl;
+	cout << "...##...........####..####...####............##...##..##.##..##." << endl;
+	cout << "...##..............##.##.....##..............##...##..##.##..##." << endl;
+	cout << ".######.........####..######.######..........##....####...####.." << endl;
+	cout << "................................................................" << endl;
 	//initialize it with all empty spaces
 	for (int i = 0; i < 10; i++)
 		inventory[i] = " ";
-	
 
 
 
+	bool china = true;
 
 	cout << "Welcome to the End?" << endl;
 	//game story underneath
@@ -35,7 +47,7 @@ int main() {
 	int room = 1;
 	char input;
 
-	while (1) { //game loop
+	while (china) { //game loop
 		cout << "Your Inventory:" << endl;
 		for (int i = 0; i < 10; i++)
 			cout << inventory[i] << " "; //shows the inventory along with the items
@@ -46,7 +58,7 @@ int main() {
 			MonsterGen();
 			cout << "You enter to a destroyed looking living room where a couch sits in the middle, half of it missing and the stuffing everywhere. By the looks of it you can only go (s)traight" << endl;
 			if (inventory[0] != "key")
-			cout << "On the ground there is an old (k)ey." << endl;
+				cout << "On the ground there is an old (k)ey." << endl;
 			cout << "there's a sho(p) in the corner" << endl;
 			cout << "and a monkey?? seems like he wants headscratches. Press h to give head rubs" << endl;
 			cin >> input;
@@ -57,7 +69,7 @@ int main() {
 			if (input == 's')
 				room = 2;
 			if (input == 'p')
-				Shop();	
+				Shop();
 			if (input == 'k') {
 				cout << "you got an old key!" << endl;
 				inventory[0] = "key";
@@ -80,7 +92,7 @@ int main() {
 			else if (input == 'n')
 				room = 3;
 			if (input == 'b')
-				itemDropper();	
+				itemDropper();
 			break;
 		case 3:
 			MonsterGen();
@@ -131,15 +143,15 @@ int main() {
 			else if (input == 'n')
 				room = 7;
 			if (input == 'b')
-				itemDropper();	
+				itemDropper();
 			break;
 		case 7:
 			MonsterGen();
-			MonkeyActions(); 
+			MonkeyActions();
 			cout << "MORE HEADRUBS!! press h" << endl;
 			cout << "The room is pretty? As you enter there is a couch sitting in the middle, a very nice clean white couch and on the wall infront a stand that looks like its for a tv. Do you go to the (n)ext room or (r)eturn to the previous?" << endl;
 			cin >> input;
-			if (input == 'w')
+			if (input == 'r')
 				room = 6;
 			else if (input == 'n')
 				room = 8;
@@ -151,9 +163,9 @@ int main() {
 			cout << "This room is exactly the same as the previous but everything is placed on the side of the wall near the next door rather than in the middle. Do you go to the (n)ext or (r)eturn to the previous?" << endl;
 			cout << "theres a rusty (b)ox in the room" << endl;
 			cin >> input;
-			if (input == 's')
+			if (input == 'r')
 				room = 7;
-			else if (input == 'e')
+			else if (input == 'n')
 				room = 9;
 			if (input == 'b')
 				itemDropper();
@@ -164,7 +176,7 @@ int main() {
 			cout << "MORE HEADRUBS!! press h" << endl;
 			cout << "Now this room has a chandelier above the couch. It has a nice gold shine on it. You can proceed to the (n)ext or (r)eturn to the previous." << endl;
 			cin >> input;
-			if (input == 'w')
+			if (input == 'r')
 				room = 8;
 			else if (input == 'n')
 				room = 10;
@@ -175,7 +187,7 @@ int main() {
 			cout << "MORE HEADRUBS!! press h" << endl;
 			cout << "New room new things. The chandelier has fallen onto the couch where a skeleton lies. Looks like it fell on someone that was there. Do you proceed to the (n)ext or (r)eturn?" << endl;
 			cin >> input;
-			if (input == 's')
+			if (input == 'r')
 				room = 9;
 			else if (input == 'n')
 				room = 11;
@@ -187,9 +199,9 @@ int main() {
 			cout << "This room is upside down but looks the same as the previous? the chandelier is still 'fallen' but rather than it falling downward it fell upward toward the roof where the couch is now somehow at along with the tv stand. (n)ext or (p)revious room?" << endl;
 			cout << "theres a rusty (b)ox in the room" << endl;
 			cin >> input;
-			if (input == 's')
+			if (input == 'r')
 				room = 10;
-			else if (input == 'e')
+			else if (input == 'n')
 				room = 12;
 			if (input == 'b')
 				itemDropper();
@@ -201,7 +213,7 @@ int main() {
 			cout << "It's all gone. All except the chandelier and the skeleton. everything is now upright but much harder to see again with flckering lights. And the sound from before is back still hard to see but enough to make your way to the (n)ext room or the (p)revious, what do you choose?" << endl;
 			cout << "theres a rusty (b)ox in the room" << endl;
 			cin >> input;
-			if (input == 'w')
+			if (input == 'r')
 				room = 11;
 			else if (input == 'n')
 				room = 13;
@@ -215,7 +227,7 @@ int main() {
 			cout << "Once again, the lights are flickering making it hard to see. All thats left is a skeleton standing and watching you no matter where you move. Do you want to continue to the (n)ext room or (r)eturn?" << endl;
 			cout << "theres a rusty (b)ox in the room" << endl;
 			cin >> input;
-			if (input == 's')
+			if (input == 'r')
 				room = 12;
 			else if (input == 'n')
 				room = 14;
@@ -226,11 +238,11 @@ int main() {
 			MonsterGen();
 			MonkeyActions();
 			cout << "MORE HEADRUBS!! press h" << endl;
-			cout << "The skeleton is now watching you while pointing at a closed door where you can hear the strange noise. It sounds like growling. Do you (test) it or do you (chicken) out? There will be no returning!!!" << endl;
+			cout << "The skeleton is now watching you while pointing at a closed door where you can hear the strange noise. It sounds like growling. Do you (t)est it or do you (c)hicken out? There will be no returning!!!" << endl;
 			cin >> input;
-			if (input == 's')
+			if (input == 'c')
 				room = 13;
-			else if (input == 'e')
+			else if (input == 't')
 				room = 15;
 			break;
 		case 15:
@@ -243,8 +255,28 @@ int main() {
 			if (input == 'b')
 				itemDropper();
 			break;
+
+			if (inventory[4] == "banana" && inventory[5] == "sock") {
+				cout << "You win!" << endl;
+				china = false;
+			}
+			else {
+				cout << "Your missing something.. goodbye!" << endl;
+				china = false;
+			}
+			system("pause");
+
 		}
+	}//end of game loop!
+	if (inventory[4] == "banana" && inventory[5] == "sock") {
+		cout << "good job good bye" << endl;
+		
 	}
+	else {
+		cout << "You lose!" << endl;
+		
+	}
+
 }
 
 
@@ -293,7 +325,7 @@ void itemDropper() {
 }
 
 void Shop() {
-	int input = 123456789012345678;
+	int input = 1234567;
 	while (input != 0) {
 		cout << "welcome to the shop!" << endl;
 		cout << "you have " << dubloons << " dubloons." << endl;
@@ -329,18 +361,18 @@ void Shop() {
 			}
 			else
 				cout << "you think this is a joke??" << endl;
-		if (input == 'b'){
-			cout << "adios brudda" << endl;
-			
-		}
-		
+			if (input == 'b') {
+				cout << "adios brudda" << endl;
+
+			}
+
 		}
 	}
 } //end of shop function
 
 
-void BattleSystem() 
-	{
+void BattleSystem()
+{
 	int MonsterHealth = 20;
 	cout << "-------Round 1 FIGHT!!-------" << endl;
 	while (health > 0 && MonsterHealth > 0) {
@@ -363,4 +395,4 @@ void BattleSystem()
 
 	}
 	cout << "--------------------" << endl;
-	}
+}

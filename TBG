@@ -14,23 +14,16 @@ void itemDropper();
 void Shop();
 void BattleSystem();
 void MonkeyActions();
+void EmptyBox();
+void FinalStore();
+void Headache();
 //int r= rand() % 255 + 1;
 //int g = rand() % 255 + 1;
 //int b = rand() % 255 + 1;
 
 int main() {
-	cout << "                    ,------." << endl;
-	cout << "                   /        \\" << endl;
-	cout << "                  | C)   C)  |" << endl;
-	cout << "                  |  .___,   |" << endl;
-	cout << "                   \\. \\_/   /" << endl;
-	cout << "                    `------'" << endl;
-	cout << ".######.........####..######.######........##..##..####..##..##." << endl;
-	cout << "...##..........##.....##.....##.............####..##..##.##..##." << endl;
-	cout << "...##...........####..####...####............##...##..##.##..##." << endl;
-	cout << "...##..............##.##.....##..............##...##..##.##..##." << endl;
-	cout << ".######.........####..######.######..........##....####...####.." << endl;
-	cout << "................................................................" << endl;
+	Headache();
+	//Beep(400, 500) 1=beep pitch 2= time it goes for
 	//initialize it with all empty spaces
 	for (int i = 0; i < 10; i++)
 		inventory[i] = " ";
@@ -45,9 +38,9 @@ int main() {
 
 	//local variables
 	int room = 1;
-	char input;
+	char input = 'a';
 
-	while (china) { //game loop
+	while (input != 'q' && health > 0 && (inventory[0] != "sock" && inventory[1] != "banana")) { //game loop
 		cout << "Your Inventory:" << endl;
 		for (int i = 0; i < 10; i++)
 			cout << inventory[i] << " "; //shows the inventory along with the items
@@ -256,7 +249,7 @@ int main() {
 				itemDropper();
 			break;
 
-			if (inventory[4] == "banana" && inventory[5] == "sock") {
+			if (inventory[1] == "banana" && inventory[0] == "sock") {
 				cout << "You win!" << endl;
 				china = false;
 			}
@@ -268,12 +261,12 @@ int main() {
 
 		}
 	}//end of game loop!
-	if (inventory[4] == "banana" && inventory[5] == "sock") {
-		cout << "good job good bye" << endl;
+	if (inventory[1] == "banana" && inventory[0] == "sock") {
+		cout << "thanks for the items human. maybe you're not too bad, now leave before i change my mind!!" << endl;
 		
 	}
 	else {
-		cout << "You lose!" << endl;
+		cout << "I never liked you humans. Maybe the next will do better than you" << endl;
 		
 	}
 
@@ -304,23 +297,38 @@ void MonsterGen() {
 	else
 		cout << "nothing spawned" << endl;
 }
+void EmptyBox() {
+	int num = rand() % 100;
+	if (num < 25)
+		cout << "tough luck buddy this ones empty" << endl;
+	else if (num < 50)
+		cout << "WOW!!! its nothing..." << endl;
+	else if (num < 75)
+		cout << "ah sweet its empty" << endl;
+	else
+		cout << "must be your birthday because theres nothing in this one" << endl;
+}
 
 void itemDropper() {
 	int num = rand() % 100; // b/t 0-99
 	if (num < 25) {
-		cout << "you got a dirty sock!" << endl;
-		inventory[1] = "sock";
+		cout << "you got a small blue lego... useless" << endl;
+		inventory[3] = "legos";
 	}
 	else if (num < 50) {
-		cout << "you got a handful of legos!" << endl; \
+		cout << "you got a rubber ducky!" << endl; \
 			inventory[2] = "legos";
 	}
 	else if (num < 60) {
-		cout << "you got a CHICKEN" << endl;
-
+		cout << "you got a crusty sock???" << endl;
+			inventory[0] = "crusty sock";
 	}
-	else {
-		cout << "tough luck buddy, this one's empty" << endl;
+	else if (num < 70) {
+		cout << "Nice a banana" << endl;
+			inventory[1] = "banana";
+	}
+	else{
+		EmptyBox();
 	}
 }
 
@@ -333,7 +341,7 @@ void Shop() {
 		cout << "1) sword: 20" << endl;
 		cout << "2) potion: 10" << endl;
 		cout << "3) armor: 50" << endl;
-		cout << "to leave shop press b" << endl;
+		cout << "to leave shop press 0" << endl;
 		cin >> input;
 		if (input == 1) {
 			if (dubloons >= 20) {
@@ -361,7 +369,7 @@ void Shop() {
 			}
 			else
 				cout << "you think this is a joke??" << endl;
-			if (input == 'b') {
+			if (input == 'l') {
 				cout << "adios brudda" << endl;
 
 			}
@@ -370,6 +378,9 @@ void Shop() {
 	}
 } //end of shop function
 
+void FinalStore() {
+	//if ()
+}
 
 void BattleSystem()
 {
@@ -395,4 +406,38 @@ void BattleSystem()
 
 	}
 	cout << "--------------------" << endl;
+}
+void Headache() {
+	for (int i = 0; i < 20; i++) {
+		system("cls");
+		cout << "                    ,------." << endl;
+		cout << "                   /        \\" << endl;
+		cout << "                  | C)   C)  |" << endl;
+		cout << "                  |  .___,   |" << endl;
+		cout << "                   \\. \\_/   /" << endl;
+		cout << "                    `------'" << endl;
+		cout << ".######.........####..######.######........##..##..####..##..##." << endl;
+		cout << "...##..........##.....##.....##.............####..##..##.##..##." << endl;
+		cout << "...##...........####..####...####............##...##..##.##..##." << endl;
+		cout << "...##..............##.##.....##..............##...##..##.##..##." << endl;
+		cout << ".######.........####..######.######..........##....####...####.." << endl;
+		cout << "................................................................" << endl;
+		system("color fdxjt");
+		Sleep(10);
+		system("cls");
+		cout << "                    ,------." << endl;
+		cout << "                   /        \\" << endl;
+		cout << "                  | C)   C)  |" << endl;
+		cout << "                  |  .___,   |" << endl;
+		cout << "                   \\. \\_/   /" << endl;
+		cout << "                    `------'" << endl;
+		cout << ".######.........####..######.######........##..##..####..##..##." << endl;
+		cout << "...##..........##.....##.....##.............####..##..##.##..##." << endl;
+		cout << "...##...........####..####...####............##...##..##.##..##." << endl;
+		cout << "...##..............##.##.....##..............##...##..##.##..##." << endl;
+		cout << ".######.........####..######.######..........##....####...####.." << endl;
+		cout << "................................................................" << endl;
+		system("color 07");
+		Sleep(10);
+	}
 }

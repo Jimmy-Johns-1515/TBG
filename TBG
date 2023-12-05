@@ -8,6 +8,7 @@ int dubloons = 100;
 int health = 100;
 int PetAff = 0;
 
+
 //function declarations
 void MonsterGen();
 void itemDropper();
@@ -22,12 +23,12 @@ void Headache();
 //int b = rand() % 255 + 1;
 
 int main() {
+	
 	Headache();
-	//Beep(400, 500) 1=beep pitch 2= time it goes for
 	//initialize it with all empty spaces
 	for (int i = 0; i < 10; i++)
 		inventory[i] = " ";
-
+	system("cls");
 
 
 	bool china = true;
@@ -237,6 +238,8 @@ int main() {
 				room = 13;
 			else if (input == 't')
 				room = 15;
+			else if (input == 'p')
+				FinalStore();
 			break;
 		case 15:
 			MonsterGen();
@@ -263,11 +266,11 @@ int main() {
 	}//end of game loop!
 	if (inventory[1] == "banana" && inventory[0] == "sock") {
 		cout << "thanks for the items human. maybe you're not too bad, now leave before i change my mind!!" << endl;
-		
+
 	}
 	else {
 		cout << "I never liked you humans. Maybe the next will do better than you" << endl;
-		
+
 	}
 
 }
@@ -321,13 +324,13 @@ void itemDropper() {
 	}
 	else if (num < 60) {
 		cout << "you got a crusty sock???" << endl;
-			inventory[0] = "crusty sock";
+		inventory[0] = "crusty sock";
 	}
 	else if (num < 70) {
 		cout << "Nice a banana" << endl;
-			inventory[1] = "banana";
+		inventory[1] = "banana";
 	}
-	else{
+	else {
 		EmptyBox();
 	}
 }
@@ -338,9 +341,9 @@ void Shop() {
 		cout << "welcome to the shop!" << endl;
 		cout << "you have " << dubloons << " dubloons." << endl;
 		cout << "items for sale:" << endl;
-		cout << "1) sword: 20" << endl;
-		cout << "2) potion: 10" << endl;
-		cout << "3) armor: 50" << endl;
+		cout << "1) sword: 20 dabloons" << endl;
+		cout << "2) potion: 10 dabloons" << endl;
+		cout << "3) armor: 50 dabloons" << endl;
 		cout << "to leave shop press 0" << endl;
 		cin >> input;
 		if (input == 1) {
@@ -379,7 +382,26 @@ void Shop() {
 } //end of shop function
 
 void FinalStore() {
-	//if ()
+	int input = 1234;
+	while (input != 0) {
+		cout << "Ill take your legos and rubber ducks off ya for bananas and socks";
+		cout << "1) crusty sock" << endl;
+		cout << "2) banana" << endl;
+		if (input == 2) {
+			cout << "ahh good choice! a semi tasty banana" << endl;
+			if (inventory[3] == "lego") {
+				cout << "I'll take those legos in exchange." << endl;
+				inventory[2] = "rubber duckys"; //remove legos
+				inventory[1] = "banana"; //get banana
+			}
+			else if (inventory[2] == "rubber duck") {
+				cout << "I'll take that duck." << endl;
+				inventory[2] = " "; //remove duck
+				inventory[1] = "banana"; //get banana
+			}
+		}
+	}
+
 }
 
 void BattleSystem()
@@ -422,8 +444,8 @@ void Headache() {
 		cout << "...##..............##.##.....##..............##...##..##.##..##." << endl;
 		cout << ".######.........####..######.######..........##....####...####.." << endl;
 		cout << "................................................................" << endl;
-		system("color fdxjt");
-		Sleep(10);
+		system("color 47");
+		Beep(150, 50); //1=pitch 2= time it goes for
 		system("cls");
 		cout << "                    ,------." << endl;
 		cout << "                   /        \\" << endl;
@@ -438,6 +460,6 @@ void Headache() {
 		cout << ".######.........####..######.######..........##....####...####.." << endl;
 		cout << "................................................................" << endl;
 		system("color 07");
-		Sleep(10);
+		Beep(150, 50); //1=pitch 2= time it goes for
 	}
 }

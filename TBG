@@ -7,9 +7,9 @@ using namespace std;
 //global variables
 string inventory[10];
 int dubloons = 100;
-int health = 100;
+int health = 150;
 int PetAff = 0;
-int PlayerDMG = 10;
+int PlayerDMG = 20;
 
 
 //function declarations
@@ -21,10 +21,11 @@ void MonkeyActions();
 void EmptyBox();
 void FinalStore();
 void Headache();
-void Flicker();
+void FlickerFace();
+void Flick();
 
 int main() {
-	Flicker();
+	Headache();
 	//initialize it with all empty spaces
 	for (int i = 0; i < 10; i++)
 		inventory[i] = " ";
@@ -32,7 +33,20 @@ int main() {
 
 
 	bool china = true;
-
+	bool petted = false;
+	bool llave = false;
+	bool looted = false;
+	bool encountered2 = false;
+	bool encountered3 = false;
+	bool encountered4 = false;
+	bool encountered6 = false;
+	bool encountered7 = false;
+	bool encountered8 = false;
+	bool encountered9 = false;
+	bool encountered10 = false;
+	bool encountered12 = false;
+	bool encountered13 = false;
+	bool encountered14 = false;
 	cout << "Welcome to the End?" << endl;
 	//game story underneath
 	cout << "You enter a broken down house to investigate why nobody will go near the house or why people dissappear when they do.As you enter the house the door shuts and wont open. When you turn around you see a shadowy small figure run away. Was it amonkey???" << endl;
@@ -40,6 +54,7 @@ int main() {
 	//local variables
 	int room = 1;
 	string input = "a";
+	bool dialogue = false;
 
 	while (input != "q" && health > 0 && (inventory[0] != "sock" && inventory[1] != "banana")) { //game loop
 		if (PetAff >= 30) {
@@ -50,63 +65,90 @@ int main() {
 		for (int i = 0; i < 10; i++)
 			cout << inventory[i] << " "; //shows the inventory along with the items
 		cout << endl << endl;
+		if (inventory[6] == "meds") {
+			cout << "do you wish to heal? press (m)" << endl;
+			if (input == "m") {
+				cout << "you feel better already" << endl;
+				health += 20;
+			}
+
+		}
 		switch (room) {
 		case 1:
 			system("color 70");
-			cout << "You enter to a destroyed looking living room where a couch sits in the middle, half of it missing and the stuffing everywhere. By the looks of it you can only go (s)traight" << endl;
-			if (inventory[0] != "key")
-				cout << "On the ground there is an old (k)ey." << endl;
-			cout << "and a monkey?? seems like he wants headscratches. Press h to give head rubs" << endl;
+			if (dialogue == false && room == 1)
+				cout << "You enter to a destroyed looking living room where a couch sits in the middle, half of it missing and the stuffing everywhere. By the looks of it you can only go (s)traight" << endl;
+			dialogue = true;
+			if (llave == false) 
+				cout << "There's a (k)ey on the ground. Does it fit anywhere?" << endl;
 			cin >> input;
-			if (input == "h") {
-				cout << "he seems happy and starts following you. strange." << endl;
-				PetAff += 10;
-			}
-			if (input == "s")
+			if (input == "s" && llave == true) {
+				dialogue = false;
 				room = 2;
-
+			}
 			if (input == "k") {
 				cout << "you got an old key!" << endl;
-				inventory[0] = "key";
+				inventory[7] = "key";
+				llave = true;
 			}
 			break;
 		case 2:
-			MonsterGen();//function call
-			BattleSystem();
-			MonkeyActions();
+			if (encountered2 == false) {
+				encountered2 = true;
+				MonsterGen();//function call
+				BattleSystem();
+				MonkeyActions();
+			}
+			
 			cout << "As you enter this new room it starts to look less like a house and more like some psychos house. You can proceed to the (n)ext room or (r)eturn to the previous room." << endl;
-			cout << "Do you wish to give the monkey more headrubs?" << endl;
-			cout << "There's a rusty (b)ox in the room" << endl;
+			if (petted == false) {
+				cout << "seems like he wants headscratches. Press h to give head rubs" << endl;
+			}
+			if (looted == false) {
+				cout << "There's a rusty (b)ox in the room" << endl;
+			}
 			cin >> input;
 			if (input == "h") {
 				cout << "he seems happy and starts following you. strange." << endl;
 				PetAff += 10;
+				petted = true;
 			}
 			if (input == "r")
 				room = 1;
 			else if (input == "n")
 				room = 3;
-			if (input == "b")
+			if (input == "b") {
 				itemDropper();
+				looted = true;
+			}
 			break;
 		case 3:
-			MonsterGen();
-			BattleSystem();
-			MonkeyActions();
+			if (encountered3 == false) {
+				encountered3 = true;
+				MonsterGen();//function call
+				BattleSystem();
+				MonkeyActions();
+			}
 			cout << "You enter and it smells foul. It is hard to see with the occasional flashing light but in the corner there seems to be a human skull?!?! Do you go to the (n)ext room or (r)eturn to the previous room?" << endl;
-			cout << "Do you wish to give the monkey more headrubs?" << endl;
+			if (petted == false) {
+				cout << " and a monkey ? ? seems like he wants headscratches.Press h to give head rubs" << endl;
+			}
 			cin >> input;
 			if (input == "h")
 				PetAff += 10;
+				petted = true;
 			if (input == "r")
 				room = 2;
 			else if (input == "n")
 				room = 4;
 			break;
 		case 4:
-			MonsterGen();
-			BattleSystem();
-			MonkeyActions();
+			if (encountered4 == false) {
+				encountered4 = true;
+				MonsterGen();//function call
+				BattleSystem();
+				MonkeyActions();
+			}
 			cout << "This new room has blood smeared all around as if someone was trying to get away from something else. Lots of trash on the sticky floor. Do you wish to go to the (n)ext room or (r)eturn to the previous?" << endl;
 			cout << "Do you wish to give the monkey more headrubs?" << endl;
 			cout << "theres a rusty (b)ox in the room" << endl;
@@ -133,9 +175,12 @@ int main() {
 				room = 6;
 			break;
 		case 6:
-			MonsterGen();
-			BattleSystem();
-			MonkeyActions();
+			if (encountered6 == false) {
+				encountered6 = true;
+				MonsterGen();//function call
+				BattleSystem();
+				MonkeyActions();
+			}
 			cout << "The sound continues playing but you still have no clue as to what it is. These rooms are looking exactly the same but if you look back you can tell its a new room. Do you go to the (n)ext or (r)eturn to the previous?" << endl;
 			cout << "Do you wish to give the monkey more headrubs?" << endl;
 			cout << "theres a rusty (b)ox in the room" << endl;
@@ -150,9 +195,12 @@ int main() {
 				itemDropper();
 			break;
 		case 7:
-			MonsterGen();
-			BattleSystem();
-			MonkeyActions();
+			if (encountered7 == false) {
+				encountered7 = true;
+				MonsterGen();//function call
+				BattleSystem();
+				MonkeyActions();
+			}
 			cout << "The room is pretty? As you enter there is a couch sitting in the middle, a very nice clean white couch and on the wall infront a stand that looks like its for a tv. Do you go to the (n)ext room or (r)eturn to the previous?" << endl;
 			cout << "Do you wish to give the monkey more headrubs?" << endl;
 			cin >> input;
@@ -164,9 +212,12 @@ int main() {
 				room = 8;
 			break;
 		case 8:
-			MonsterGen();
-			BattleSystem();
-			MonkeyActions();
+			if (encountered8 == false) {
+				encountered8 = true;
+				MonsterGen();//function call
+				BattleSystem();
+				MonkeyActions();
+			}
 			cout << "This room is exactly the same as the previous but everything is placed on the side of the wall near the next door rather than in the middle. Do you go to the (n)ext or (r)eturn to the previous?" << endl;
 			cout << "Do you wish to give the monkey more headrubs?" << endl;
 			cout << "theres a rusty (b)ox in the room" << endl;
@@ -181,9 +232,12 @@ int main() {
 				itemDropper();
 			break;
 		case 9:
-			MonsterGen();
-			BattleSystem();
-			MonkeyActions();
+			if (encountered9 == false) {
+				encountered9 = true;
+				MonsterGen();//function call
+				BattleSystem();
+				MonkeyActions();
+			}
 			cout << "Now this room has a chandelier above the couch. It has a nice gold shine on it. You can proceed to the (n)ext or (r)eturn to the previous." << endl;
 			cout << "Do you wish to give the monkey more headrubs?" << endl;
 			cin >> input;
@@ -195,9 +249,12 @@ int main() {
 				room = 10;
 			break;
 		case 10:
-			MonsterGen();
-			BattleSystem();
-			MonkeyActions();
+			if (encountered10 == false) {
+				encountered10 = true;
+				MonsterGen();//function call
+				BattleSystem();
+				MonkeyActions();
+			}
 			cout << "New room new things. The chandelier has fallen onto the couch where a skeleton lies. Looks like it fell on someone that was there. Do you proceed to the (n)ext or (r)eturn?" << endl;
 			cout << "Do you wish to give the monkey more headrubs?" << endl;
 			cin >> input;
@@ -224,12 +281,15 @@ int main() {
 				itemDropper();
 			break;
 		case 12:
-			MonsterGen();
-			BattleSystem();
-			MonkeyActions();
+			if (encountered12 == false) {
+				encountered12 = true;
+				MonsterGen();//function call
+				BattleSystem();
+				MonkeyActions();
+			}
 			cout << "It's all gone. All except the chandelier and the skeleton. everything is now upright but much harder to see again with flckering lights but you think you saw someone staring at yiu. The sound from before is back still hard to see but enough to make your way to the(n)ext room or the(p)revious, what do you choose ? " << endl;
-				system("clr");
-				Flicker();
+				system("cls");
+				FlickerFace();
 			cout << "Do you wish to give the monkey more headrubs?" << endl;
 			cout << "theres a rusty (b)ox in the room" << endl;
 			cin >> input;
@@ -243,9 +303,12 @@ int main() {
 				itemDropper();
 			break;
 		case 13:
-			MonsterGen();
-			BattleSystem();
-			MonkeyActions();
+			if (encountered13 == false) {
+				encountered13 = true;
+				MonsterGen();//function call
+				BattleSystem();
+				MonkeyActions();
+			}
 			cout << "Once again, the lights are flickering making it hard to see. All thats left is a skeleton standing and watching you no matter where you move. Do you want to continue to the (n)ext room or (r)eturn?" << endl;
 			cout << "Do you wish to give the monkey more headrubs?" << endl;
 			cout << "theres a rusty (b)ox in the room" << endl;
@@ -260,9 +323,12 @@ int main() {
 				itemDropper();
 			break;
 		case 14:
-			MonsterGen();
-			BattleSystem();
-			MonkeyActions();
+			if (encountered14 == false) {
+				encountered14 = true;
+				MonsterGen();//function call
+				BattleSystem();
+				MonkeyActions();
+			}
 			cout << "The skeleton is now watching you while pointing at a closed door where you can hear the strange noise. It sounds like growling. Do you (t)est it or do you (c)hicken out? There will be no returning!!!" << endl;
 			cout << "Do you wish to give the monkey more headrubs?" << endl;
 			cin >> input;
@@ -504,8 +570,8 @@ void Headache() {
 	}
 }
 
-void Flicker() {
-	for (int i = 0; i < 20; i++) {
+void FlickerFace() {
+	for (int i = 3; i < 20; i++) {
 		system("cls");
 		cout << "   ,o0MMMMMMMMNMMMMM8888888888888888MMMMMM.88" << endl;
 		cout << "  8888888888V'.o   ```VoooooooooV'''   o. V8" << endl;
@@ -540,3 +606,20 @@ void Flicker() {
 		Sleep(100);
 	}
 }
+
+void Flick(){
+	for (int i = 0; i < 2; i++) {
+		system("cls");
+		system("color 70");
+		Sleep(200);
+		system("cls");
+		system("color 07");
+		Sleep(700);
+		system("cls");
+		system("color 70");
+		Sleep(100);
+		system("cls");
+		system("color 07");
+		Sleep(100);
+		system("cls");
+}	}
